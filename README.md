@@ -120,8 +120,8 @@ GeoImage KMZ is a free tool created for historical researchers, genealogists, an
 metal detecting enthusiasts.
 
 If you find it useful, please consider supporting development:
-	•	PayPal: https://www.paypal.com/paypalme/techbill
-	•	Buy Me a Coffee: https://buymeacoffee.com/techbill
+•	PayPal: https://www.paypal.com/paypalme/techbill
+•	Buy Me a Coffee: https://buymeacoffee.com/techbill
 
 Author: Bill Fleming (TechBill)
 
