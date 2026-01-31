@@ -1,110 +1,208 @@
-# GeoImage KMZ – User Guide
+# GeoImage KMZ – User Guide (v2.0)
 
----
 
 ## Overview
 
-GeoImage KMZ is a lightweight, standalone desktop application designed for historical and exploratory map research. It helps you align scanned or photographed maps (plat maps, railroad maps, atlases, aerials, etc.) with modern geographic coordinates so they can be overlaid in Google Earth and other KMZ-compatible tools.
+GeoImage KMZ is a lightweight desktop app for historical and exploratory map research.
+It helps you align scanned/photographed maps (plat maps, atlases, aerials, etc.) to real
+coordinates and export a KMZ overlay for Google Earth and other KMZ-compatible tools.
 
-The app is intentionally simple and fast, focusing on research and field scouting rather than survey-grade GIS accuracy.
+This is for research and visualization. It is not survey-grade GIS.
 
----
 
-## Paste Coordinates Feature
+## Security Notice (macOS + Windows)
 
-GeoImage KMZ includes a **Paste Coordinates** button in the *Enter Coordinates* dialog to speed up adding control points.
+Because GeoImage KMZ is distributed as a downloadable app (not from the official Apple App Store or Microsoft Store), your computer may display a security warning the first time you run it. This is normal for many independent / open-source apps.
 
-Instead of typing latitude and longitude manually, you can copy coordinates from common mapping tools and paste them directly. The app automatically extracts and fills the Latitude and Longitude fields.
+macOS (Apple Silicon + Intel)
+- When opening GeoImage KMZ for the first time, macOS may block it and show a message like:
+  “GeoImage KMZ can’t be opened because Apple cannot check it for malicious software.”
+- If that happens:
+  1) Try opening the app once (so macOS registers it)
+  2) Go to System Settings
+  3) Click Privacy & Security
+  4) Scroll down to the Security section
+  5) You should see a message about GeoImage KMZ being blocked → click Open Anyway
+  6) Confirm again if prompted
+- After you approve it once, the app should open normally in the future.
 
----
+Windows
+- When running GeoImage KMZ for the first time, Windows may show a warning such as:
+  “Windows protected your PC”
+- If that happens:
+  1) Click More info
+  2) Click Run anyway
 
-### Google Earth Pro
+This is common for smaller apps that are not digitally signed.
 
-Google Earth Pro does not support direct right-click copying of map coordinates. Instead, use a placemark:
 
-1. Click **Add Placemark** (yellow pushpin icon)
-2. Move the placemark to the desired location
-3. Click **OK** to close the placemark information window
-4. Right-click directly on the **placemark pin on the map**
-5. Choose **Copy**
-6. Click **Paste Coordinates** in GeoImage KMZ
+## License / Disclaimer
 
-GeoImage KMZ automatically extracts the latitude and longitude from the copied KML.
+GeoImage KMZ is free to use and open source.
 
----
+This project was originally developed for personal historical and exploratory map research, and it is being shared freely for anyone who would like to try it.
 
-### Google Maps
+GeoImage KMZ is provided as-is, without warranty of any kind.
+The author is not responsible for any damage, data loss, or other issues resulting from the use of this software.
 
-1. Right-click anywhere on the map
-2. Click the coordinates shown in the menu
-3. The coordinates are copied to the clipboard
-4. Click **Paste Coordinates** in GeoImage KMZ
 
-Example:
-```
-38.627003, -90.199402
-```
 
----
+## Quick Start Workflow
 
-### QGIS
+1) Load Image…
+   Select a map image (PNG/JPG/TIF/etc.).
 
-1. Load a basemap (e.g., OpenStreetMap) in QGIS
-2. Right-click anywhere on the map → **Copy Coordinate**
-3. Select **EPSG:4326 – WGS 84**
-4. Click **Paste Coordinates** in GeoImage KMZ
+2) Open Viewer
+   Pan/zoom the map and place control points.
 
-⚠️ Do not use projected coordinate systems such as **EPSG:3857** (meters).
+3) Add 3–8 Control Points
+   In the Viewer panel: Mark Coordinate → Add Point
+   Click on the map, then enter Latitude/Longitude (decimal degrees).
 
----
+4) Optional: Border Mask
+   Use Create Border Mask (automatic) or Draw Border (manual) to hide map margins.
 
-### Supported Paste Formats
+5) Generate KMZ…
+   Save a KMZ and open it in Google Earth / Google Earth Pro.
 
-GeoImage KMZ supports common formats including:
 
-- `38.627003, -90.199402`
-- `38.627003 -90.199402`
-- `-90.199402,38.627003,0` (Google Earth KML)
-- Text containing valid latitude and longitude values
+## Viewer Controls
 
----
+Panning and Zoom
+- Left drag: pan (when not placing a point)
+- Right drag: always pan (works in any mode)
+- Mouse wheel: zoom at cursor position
+- Zoom + / Zoom - buttons: zoom at center
 
-## Rotation Reminder
+Add / Edit Points
+- Add Point: arms the next click to place a point, then prompts for coordinates.
+- Drag red dots: reposition a point (pixel position).
+- Edit… / Delete: modify or remove a selected point in the list.
+- Clear Points: removes all control points.
 
-- Rotating the image clears all control points
-- Always rotate **before** adding points
+Rotate
+- Rotate clears ALL control points and any border mask.
+- Always rotate first, then add points/border.
 
----
 
-## Troubleshooting Notes
+## Paste Coordinates
 
-If pasted coordinates do not appear:
-- Ensure the values are latitude/longitude in decimal degrees
-- Avoid meter-based projected coordinates
-- Try copying again from the source tool
+In the Enter Coordinates dialog:
+- Paste Coordinates reads the clipboard and fills Latitude/Longitude automatically.
 
----
+Works with:
+- Google Earth Pro “Copy” on a placemark (KML)
+- Google Maps coordinate copy
+- Any plain text containing two decimal-degree values
 
-## License & Credits
+Examples:
+- 38.627003, -90.199402
+- 38.627003 -90.199402
+- -90.199402,38.627003,0  (Google Earth KML order)
 
-GeoImage KMZ is provided **as-is** for personal and research use.
 
-Redistribution is permitted provided this guide and author credit remain intact.
+## PLSS Lookup (Missouri and Kansas Only)
 
----
+GeoImage KMZ includes a PLSS (Public Land Survey System) helper that can fetch section
+corner coordinates for **Missouri and Kansas**.
 
-## Support & Contact
+Why only two states?
+- PLSS data is not available from one single, universal “federal lookup” API that covers
+  every state in a consistent way.
+- In practice, PLSS services and datasets are **state-by-state**, with different formats,
+  field names, and availability.
+- This app currently includes only Missouri and Kansas because those are the states being
+  researched right now. More may be added later if reliable, public sources exist.
 
-GeoImage KMZ is a free tool created for historical researchers, genealogists, and metal detecting enthusiasts.
+How to use PLSS Lookup
+1) In the Viewer panel click Add Point
+2) Click the map where you want that section corner
+3) In the Enter Coordinates dialog click PLSS Lookup…
+4) Choose:
+   - State: Missouri or Kansas
+   - Township number and direction (N/S)
+   - Range number and direction (E/W)
+   - Section (1–36)
+   - Corner: NW, NE, SE, SW (the corner of that section you are marking)
+5) Click Fetch
+6) The Latitude/Longitude fields auto-fill; click OK to save the point.
 
-If you find it useful, please consider supporting development:
+Tip
+- The app remembers the last PLSS inputs **during the session** so adding multiple corners
+  is faster (you usually only change Section and Corner).
 
-- PayPal: https://www.paypal.com/paypalme/techbill
-- Buy Me a Coffee: https://buymeacoffee.com/techbill
 
-**Author:** Bill Fleming (TechBill)
-**GitHub:** https://github.com/TechBill
+## Border Mask Feature
 
----
+A Border Mask makes everything outside a polygon transparent in the final overlay image.
+This is useful to hide white margins, legend blocks, publisher text, township/range notes,
+and other clutter so multiple maps can sit edge-to-edge cleanly in Google Earth.
 
-*Thank you for using GeoImage KMZ.*
+Two Ways to Create a Border Mask
+
+Method A: Create Border Mask (Automatic)
+- In the main window, click Create Border Mask (above Generate KMZ).
+- If a border already exists, you will be told to reset it first.
+- If no border exists, you will be warned it will connect your control points in the
+  order you placed them, and you can Cancel or Proceed.
+
+Notes for best results:
+- Place your control points around the perimeter of the area you want visible.
+- Add extra points along edges (not just corners).
+- Place points in a sensible order around the map (clockwise or counterclockwise).
+
+Method B: Draw Border (Manual)
+- In the Viewer panel: Border Mask → Draw Border
+- Click to place border points (cyan points/lines).
+- Click near the first point to close the polygon.
+- Undo Line:
+  - First click re-opens a closed border (removes the closing line).
+  - Additional clicks remove the most recently added point.
+- Reset Border clears the entire border.
+
+Important
+- Only one border mask is active at a time.
+- Reset Border removes either a manually drawn border OR an auto-generated border.
+
+
+## Output Folder Behavior (v2.0)
+
+During a single app session:
+- The app remembers the last folder you loaded an image from.
+- The app remembers the last folder you generated a KMZ to.
+
+If you quit and relaunch the app:
+- The default folder resets back to Desktop.
+
+
+## KMZ Contents
+
+A KMZ is a zip-like container. Each generated KMZ contains:
+- doc.kml (the KML definition)
+- your overlay image stored inside the KMZ
+
+In v2.0 the overlay image inside the KMZ uses the **same base filename** as your input
+image (saved as PNG). This makes it easier if you unzip/organize overlays manually.
+
+Tip
+- You can rename .kmz to .zip and unzip it to inspect contents.
+
+
+## Tips for Better Alignment
+
+- Use 4–8 well-spread points for better results.
+- Pick stable, easy-to-identify features:
+  road intersections, bridges, building corners, section corners, etc.
+- If a point is slightly off, Edit it or drag its dot on the map and regenerate the KMZ.
+
+
+## Credits and Support
+
+GeoImage KMZ is provided as-is for personal and research use.
+
+Generated by GeoImage KMZ
+Author: Bill Fleming (TechBill)
+
+Donations (optional)
+PayPal: https://www.paypal.com/paypalme/techbill
+Buy Me a Coffee: https://buymeacoffee.com/techbill
