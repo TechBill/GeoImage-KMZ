@@ -3,7 +3,7 @@
 ![Python](https://img.shields.io/badge/Python-3.13-blue?logo=python&logoColor=white)
 ![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20macOS-4EAA25)
 ![License](https://img.shields.io/badge/License-Free--binary--distribution-orange)
-![Release](https://img.shields.io/badge/Release-v1.1-6f42c1)
+![Release](https://img.shields.io/badge/Release-v2.0.0-6f42c1)
 
 ---
 
