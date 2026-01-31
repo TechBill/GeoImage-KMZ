@@ -7,6 +7,24 @@
 
 ---
 
+## Latest Release (v2.0.0)
+
+Download GeoImage KMZ v2.0.0 here:  
+https://github.com/TechBill/GeoImage-KMZ/releases/tag/v2.0.0
+
+### Downloads (choose the correct zip)
+
+- **geoimage-mac-applesilicon.zip**  
+  For **Mac with Apple Silicon** (M1 / M2 / M3 / M4)
+
+- **geoimage-mac-intel.zip**  
+  For **Mac with Intel CPU** (older Macs)
+
+- **geoimage-windows.zip**  
+  For **Windows PCs** (Windows 10 / 11)
+
+---
+
 ## Overview
 
 GeoImage KMZ is a lightweight, standalone desktop application designed for historical and exploratory map research. It helps you align scanned or photographed maps (plat maps, railroad maps, atlases, etc.) with modern geographic coordinates so they can be overlaid in Google Earth.
